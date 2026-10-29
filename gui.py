@@ -19,32 +19,38 @@ last_result = None
 
 def select_file():
     global last_result
+
     file_path = filedialog.askopenfilename()
 
+    # Si el usuario cancela la selección, no hacemos nada
+    if not file_path:
+        return
+
+    # Limpiamos el resultado anterior
+    last_result = None
+
+    # Analizamos el archivo seleccionado
+    result = analyze_file(file_path)
+
+    # Comprobamos si ocurrió un error
     if "error" in result:
-        last_result = None
         result_label.config(text=result["error"])
         return
 
-    if file_path:
-        result = analyze_file(file_path)
-        
-        if result is not None:
-            last_result = result
+    # Guardamos el análisis para poder exportarlo
+    last_result = result
 
-            matches = result["yara_matches"]
-            
-            matches_text = ", ".join(matches) if matches else "None"
-            
-            result_text = (
-                f"File: {result['file_name']}\n"
-                f"Size: {result['file_size']} bytes\n"
-                f"SHA-256: {result['sha256']}\n"
-                f"YARA matches: {matches_text}"
-            )
+    matches = result["yara_matches"]
+    matches_text = ", ".join(matches) if matches else "None"
 
-            result_label.config(text=result_text)
+    result_text = (
+        f"File: {result['file_name']}\n"
+        f"Size: {result['file_size']} bytes\n"
+        f"SHA-256: {result['sha256']}\n"
+        f"YARA matches: {matches_text}"
+    )
 
+    result_label.config(text=result_text)
 
 def export_report():
     if last_result is None:
