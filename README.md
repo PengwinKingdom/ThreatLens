@@ -13,7 +13,7 @@ ThreatLens is an educational desktop application for static file analysis. It in
 The ThreatLens desktop application allows users to select a file
 and export analysis reports in JSON format.
 
-![ThreatLens Main Interface][screenshots/ThreatLens-home.png]
+![ThreatLens Main Interface](screenshots/ThreatLens-home.png)
 
 ### File Analysis with YARA
 
@@ -23,7 +23,7 @@ and YARA rule matches.
 The example below uses a harmless test signature,
 not actual malware.
 
-![ThreatLens Main Interface][screenshots/ThreatLens-analysis.png]
+![ThreatLens Main Interface](screenshots/ThreatLens-analysis.png)
 
 ## Features
 
