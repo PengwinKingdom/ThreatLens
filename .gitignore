@@ -1,0 +1,19 @@
+# Python environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Private analysis reports
+*.json
+!example_report.json
+
+# Personal documents
+*.pdf
+*.docx
+
+# Local configuration
+.env
+.env.*
+.vscode/
